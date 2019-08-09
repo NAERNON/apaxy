@@ -19,13 +19,21 @@ button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-bloc
 
 html {
   min-height: 100%;
-  border-top: 10px solid #ECEEF1;
-  border-bottom: 10px solid #ECEEF1;
   color: #61666c;
   font-weight: 400;
   font-size: 1em;
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 2em;
+}
+
+html {
+    background-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #232323;
+    }
 }
 
 body {
@@ -38,8 +46,14 @@ code {
 }
 
 a {
-  color: #61666c;
+    color: #000;
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    a {
+        color: #e9e9e9;
+    }
 }
 
 a, img {
@@ -47,8 +61,18 @@ a, img {
   outline: none;
 }
 
+a > img:hover {
+    opacity: 0.4;
+}
+
 a:hover {
-  color: #2a2a2a;
+  color: #bababa;
+}
+
+@media (prefers-color-scheme: dark) {
+    a:hover {
+        color: #696969;
+    }
 }
 
 /*------------------------------------*\
@@ -65,11 +89,12 @@ a:hover {
     Filter (search box)
 \*------------------------------------*/
 #filter {
+        background-color: rgba(0, 0, 0, 0.04);
         float: right;
         font-size:.75em;
         padding: .5em;
         margin-bottom: .5em;
-        border: 1px solid #aaa;
+        border: 1px solid rgba(0, 0, 0, 0.15);
         border-radius: .25em;
         width: 10em;
         transition: width 0.25s ease;
@@ -77,6 +102,16 @@ a:hover {
 #filter:focus {
         width: 14em;
 }
+
+@media (prefers-color-scheme: dark) {
+    #filter {
+        background-color: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.15);
+        color: white;
+    }
+}
+
+
 /*------------------------------------*\
     Demo block
 \*------------------------------------*/
@@ -96,15 +131,28 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-size: .875em;
+  color: rgb(143, 143, 143);
+}
+
+@media (prefers-color-scheme: dark) {
+    table {
+        color: rgb(111, 111, 111);
+    }
+}
+
+.odd {
+    background-color: rgb(244, 244, 244);
+}
+
+@media (prefers-color-scheme: dark) {
+    .odd {
+        background-color: rgb(50, 50, 50);
+    }
 }
 
 tr {
   outline: 0;
   border: 0;
-}
-
-tr:hover td {
-  background: #f6f6f6;
 }
 
 th {
@@ -134,17 +182,23 @@ tr td:first-of-type {
 }
 
 td {
-  padding: 5px 0;
-  outline: 0;
-  border: 0;
-  border-bottom: 1px solid #edf1f5;
-  vertical-align: middle;
-  text-align: left;
-  transition: background 300ms ease;
-  -o-transition: background 300ms ease;
-  -ms-transition: background 300ms ease;
-  -moz-transition: background 300ms ease;
-  -webkit-transition: background 300ms ease;
+    padding: 5px 0;
+    outline: 0;
+    border: 0;
+    border-bottom: 0px solid #edf1f5;
+    vertical-align: middle;
+    text-align: left;
+    transition: background 300ms ease;
+    -o-transition: background 300ms ease;
+    -ms-transition: background 300ms ease;
+    -moz-transition: background 300ms ease;
+    -webkit-transition: background 300ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    td {
+        border-color: #424242;
+    }
 }
 
 td a {
@@ -261,15 +315,24 @@ tr.parent a[href^="/"] {
     margin: 0;
 }
 .breadcrumb li {
+    color: rgb(154, 154, 154);
     display: inline-block;
-    line-height: 26px;
-    margin: 0 9px 0 -10px;
+    line-height: 10px;
+    margin: 0 9px 20px -10px;
     padding: 0 15px;
     position: relative;
 }
+
+@media (prefers-color-scheme: dark) {
+    .breadcrumb li {
+        color: rgb(100, 100, 100);
+    }
+}
+
+
 .breadcrumb li::before,
 .breadcrumb li::after {
-    border-right: 1px solid #666666;
+    border-right: 1.5px solid #000;
     content: '';
     display: block;
     height: 50%;
@@ -280,6 +343,13 @@ tr.parent a[href^="/"] {
     z-index: -1;
     transform: skewX(45deg);
 }
+@media (prefers-color-scheme: dark) {
+    .breadcrumb li::before,
+    .breadcrumb li::after {
+        border-color: #fff;
+    }
+}
+
 .breadcrumb li::after {
     bottom: 0;
     top: auto;
@@ -295,8 +365,3 @@ tr.parent a[href^="/"] {
    letter-spacing: -1px;
    text-decoration: none;
 }
-
-.breadcrumb li:nth-of-type(1) a { color: hsl(0, 0%, 70%); }
-.breadcrumb li:nth-of-type(2) a { color: hsl(0, 0%, 65%); }
-.breadcrumb li:nth-of-type(3) a { color: hsl(0, 0%, 50%); }
-.breadcrumb li:nth-of-type(4) a { color: hsl(0, 0%, 45%); }
